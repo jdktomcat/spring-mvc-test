@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:redis.properties" order="3" ignore-unresolvable="true"/>
+
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxIdle" value="${redis.maxIdle}" />
+        <property name="maxTotal" value="${redis.maxTotal}" />
+        <property name="maxWaitMillis" value="${redis.maxWaitMillis}" />
+    </bean>
+    <!-- Jedis ConnectionFactory -->
+    <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <property name="hostName" value="${redis.hostname}" />
+        <property name="port" value="${redis.port}" />
+        <property name="timeout" value="${redis.timeout}" />
+        <property name="usePool" value="true" />
+        <property name="poolConfig" ref="poolConfig" />
+    </bean>
+
+    <!-- Serializer -->
+    <!-- 如果不配置Serializer，那么存储的时候只能使用String，如果存储其他类型的对象，将会提示错误-->
+    <bean id="keySerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+    <bean id="valueSerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+    <!-- redis template definition -->
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="jedisConnectionFactory" />
+        <property name="keySerializer" ref="keySerializer"/>
+        <property name="valueSerializer" ref="valueSerializer"/>
+    </bean>
+
+</beans>
