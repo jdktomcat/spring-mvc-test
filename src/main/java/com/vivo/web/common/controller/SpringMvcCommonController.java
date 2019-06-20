@@ -18,5 +18,4 @@ public class SpringMvcCommonController {
     public String index(){
         return "index";
     }
-
 }

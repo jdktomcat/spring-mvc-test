@@ -43,6 +43,48 @@
                     }
                 });
             });
+
+            $("#addCookie").click(function () {
+                $.ajax({
+                    url: "${ctx}/mvc/cookie/add",
+                    cache: false,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        alert(data);
+                    },
+                    error: function () {
+                    }
+                });
+            });
+
+            $("#delCookie").click(function () {
+                $.ajax({
+                    url: "${ctx}/mvc/cookie/del",
+                    cache: false,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        alert(data);
+                    },
+                    error: function () {
+                    }
+                });
+            });
+
+            $("#getCookie").click(function () {
+                $.ajax({
+                    url: "${ctx}/mvc/cookie/get",
+                    cache: false,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        alert(data);
+                    },
+                    error: function () {
+                    }
+                });
+            });
         });
     </script>
 </head>
@@ -52,6 +94,10 @@
     code:<input type="text" id="captcha-code">
     <img src="${ctx}/mvc/captcha/image" id="captcha-image" width="150" height="42">
     <input type="button" id="validButton" value="验证">
+
+    <input type="button" id="addCookie" value="添加cookie">
+    <input type="button" id="delCookie" value="删除cookie">
+    <input type="button" id="getCookie" value="获取cookie">
 </div>
 </body>
 </html>
