@@ -35,31 +35,6 @@
       </exclusions>
     </dependency>
 
-    <!-- 验证码 -->
-    <dependency>
-      <groupId>com.octo.captcha</groupId>
-      <artifactId>jcaptcha</artifactId>
-      <version>1.0</version>
-      <exclusions>
-        <exclusion>
-          <groupId>javax.servlet</groupId>
-          <artifactId>servlet-api</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-
-    <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
-    <dependency>
-      <groupId>org.springframework.data</groupId>
-      <artifactId>spring-data-redis</artifactId>
-      <version>1.7.4.RELEASE</version>
-    </dependency>
-
-    <dependency>
-      <groupId>redis.clients</groupId>
-      <artifactId>jedis</artifactId>
-      <version>2.9.0</version>
-    </dependency>
 
     <dependency>
       <groupId>javax.servlet</groupId>

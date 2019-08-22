@@ -36,6 +36,7 @@ public class UserAccountHandlerInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        System.out.println("测试XML");
         return true;
     }
 
